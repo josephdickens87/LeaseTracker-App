@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText2"
+        android:id="@+id/milesYear"
         android:hint="Miles Per Year"
         android:layout_marginTop="27dp"
         android:layout_below="@+id/leaseDate"
@@ -67,9 +67,9 @@
         android:ems="10"
         android:id="@+id/leaseMonths"
         android:hint="Lease Months"
-        android:layout_below="@+id/editText2"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_alignStart="@+id/editText2"
+        android:layout_below="@+id/milesYear"
+        android:layout_alignLeft="@+id/milesYear"
+        android:layout_alignStart="@+id/milesYear"
         android:layout_marginTop="34dp" />
 
 </RelativeLayout>
