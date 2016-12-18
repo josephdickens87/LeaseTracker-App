@@ -18,14 +18,20 @@ import org.joda.time.Days;
 import org.joda.time.LocalDateTime;
 import org.joda.time.format.DateTimeFormat;
 
+import java.text.DecimalFormat;
+
 
 public class MainActivity extends AppCompatActivity
 {
    //TextView instructionText;
     EditText leaseDate;
-    EditText milesYear;
+    EditText currentMiles;
     EditText leaseMonths;
     TextView daysLeased;
+    TextView expectedMiles;
+    EditText milesAllowed;
+    TextView overMiles;
+
 
 
 
@@ -56,10 +62,15 @@ public class MainActivity extends AppCompatActivity
         //final String formattedDateToday = formatter.print(today);
 
 
-        milesYear = (EditText) findViewById(R.id.milesYear);
+        currentMiles = (EditText) findViewById(R.id.currentMiles);
         leaseMonths = (EditText) findViewById(R.id.leaseMonths);
         daysLeased = (TextView) findViewById(R.id.daysLeased);
         leaseDate = (EditText) findViewById(R.id.leaseDate);
+        expectedMiles = (TextView) findViewById(R.id.expectedMiles);
+        milesAllowed = (EditText) findViewById(R.id.milesAllowed);
+        overMiles = (TextView) findViewById(R.id.overMiles);
+
+        final DecimalFormat df2 = new DecimalFormat(".##");
 
         Button calculateButton = (Button) findViewById(R.id.calculateButton);
         calculateButton.setOnClickListener(new View.OnClickListener()
@@ -68,21 +79,37 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view)
             {
                 String leaseString = leaseDate.getText().toString();
-                String pattern1 = "MM/dd/yyyy";
-
                 LocalDateTime today = LocalDateTime.now();
                 LocalDateTime jodalease = LocalDateTime.parse(leaseString, DateTimeFormat
-                        .forPattern(pattern1));
+                        .forPattern("MM/dd/yyyy"));
+                int currentDaysLeased = Days.daysBetween(jodalease, today).getDays();
+
+                daysLeased.setText("" + currentDaysLeased);
 
 
-                int leaseDays = Days.daysBetween(jodalease, today).getDays();
+                String leaseMonthsInput = leaseMonths.getText().toString();
+                int leaseMonthsInt = Integer.parseInt(leaseMonthsInput);
 
-                String leaseDaysString = Integer.toString(leaseDays);
+                LocalDateTime leaseEnd = jodalease.plusMonths(leaseMonthsInt);
+                int leaseLengthDays = Days.daysBetween(jodalease, leaseEnd).getDays();
 
 
+                String milesInput = currentMiles.getText().toString();
+                int currentMilesInt = Integer.parseInt(milesInput);
+                double avgMiles = (double)currentMilesInt/(double)currentDaysLeased;
+                double anticipatedMiles = avgMiles*leaseLengthDays;
+
+                expectedMiles.setText("" + df2.format(anticipatedMiles));
 
 
-                daysLeased.setText(leaseDaysString);
+                String milesString = milesAllowed.getText().toString();
+                int milesyearInt = Integer.parseInt(milesString);
+                int monthlyAllowedMiles = milesyearInt/12;
+                int totalAllowedMiles = monthlyAllowedMiles*leaseMonthsInt;
+                double milesOver = anticipatedMiles - totalAllowedMiles;
+
+                overMiles.setText("" + df2.format(milesOver));
+
 
                 //Intent intent = new Intent(MainActivity.this, Main2Activity.class);
                 //startActivity(intent);
