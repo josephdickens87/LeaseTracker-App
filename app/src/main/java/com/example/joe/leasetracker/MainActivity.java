@@ -1,6 +1,5 @@
 package com.example.joe.leasetracker;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,12 +12,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import net.danlew.android.joda.JodaTimeAndroid;
+
+import org.joda.time.Days;
+import org.joda.time.LocalDateTime;
+import org.joda.time.format.DateTimeFormat;
+
+
 public class MainActivity extends AppCompatActivity
 {
-    TextView instructionText;
+   //TextView instructionText;
     EditText leaseDate;
     EditText milesYear;
     EditText leaseMonths;
+    TextView daysLeased;
+
+
 
 
     @Override
@@ -28,6 +37,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        JodaTimeAndroid.init(this);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener()
@@ -40,9 +51,15 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        leaseDate = (EditText) findViewById(R.id.leaseDate);
+        //DateTimeFormatter formatter = DateTimeFormat.forPattern("MM/dd/yyyy");
+
+        //final String formattedDateToday = formatter.print(today);
+
+
         milesYear = (EditText) findViewById(R.id.milesYear);
         leaseMonths = (EditText) findViewById(R.id.leaseMonths);
+        daysLeased = (TextView) findViewById(R.id.daysLeased);
+        leaseDate = (EditText) findViewById(R.id.leaseDate);
 
         Button calculateButton = (Button) findViewById(R.id.calculateButton);
         calculateButton.setOnClickListener(new View.OnClickListener()
@@ -50,8 +67,25 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
-                startActivity(intent);
+                String leaseString = leaseDate.getText().toString();
+                String pattern1 = "MM/dd/yyyy";
+
+                LocalDateTime today = LocalDateTime.now();
+                LocalDateTime jodalease = LocalDateTime.parse(leaseString, DateTimeFormat
+                        .forPattern(pattern1));
+
+
+                int leaseDays = Days.daysBetween(jodalease, today).getDays();
+
+                String leaseDaysString = Integer.toString(leaseDays);
+
+
+
+
+                daysLeased.setText(leaseDaysString);
+
+                //Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                //startActivity(intent);
             }
         });
 
