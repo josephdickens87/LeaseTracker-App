@@ -64,18 +64,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/leaseMonths"
-        android:hint="Lease Months"
-        android:layout_below="@+id/leaseDate"
-        android:layout_alignLeft="@+id/currentMiles"
-        android:layout_alignStart="@+id/currentMiles"
-        android:layout_marginTop="12dp"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
         android:layout_marginTop="15dp"
         android:id="@+id/milesAllowed"
         android:layout_below="@+id/currentMiles"
@@ -122,5 +110,17 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/leaseMonths"
+        android:hint="Lease Months"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/leaseDate"
+        android:layout_alignLeft="@+id/currentMiles"
+        android:layout_alignStart="@+id/currentMiles"/>
 
 </RelativeLayout>
