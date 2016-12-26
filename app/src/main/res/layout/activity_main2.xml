@@ -11,17 +11,60 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.joe.leasetracker.Main2Activity">
 
-    <TextView
-        android:text="TextView"
+    <Button
+        android:text="Calculate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/calculateButton"/>
+
+    <TextView
+        android:text="daysLeased"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/calculateButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="27dp"
+        android:id="@+id/daysLeased"/>
+
+    <TextView
+        android:text="expectedMiles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/daysLeased"
+        android:layout_alignLeft="@+id/daysLeased"
+        android:layout_alignStart="@+id/daysLeased"
+        android:layout_marginBottom="30dp"
+        android:id="@+id/expectedMiles"/>
+
+    <TextView
+        android:text="overMiles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="38dp"
+        android:id="@+id/overMiles"
+        android:layout_above="@+id/expectedMiles"
+        android:layout_alignLeft="@+id/expectedMiles"
+        android:layout_alignStart="@+id/expectedMiles"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:hint="Current Amount Of Miles"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="30dp"
-        android:id="@+id/answerTxt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"/>
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/calculateButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textAlignment="center"
-        android:textStyle="normal|bold"/>
+        android:id="@+id/button2"/>
 </RelativeLayout>
