@@ -28,49 +28,17 @@
         android:textStyle="normal|bold"
         android:textSize="14sp" />
 
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="date"
+        android:inputType="number"
         android:ems="10"
-        android:id="@+id/leaseDate"
-        android:hint="Date Lease Started"
-        android:layout_below="@+id/instructionText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp" />
-
-    <Button
-        android:text="Save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/saveButton"
-        tools:text="save"
-        android:onClick="onClick"/>
-
-
-    <TextView
-        android:text="Expected Miles"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/expectedMiles"
-        android:textAlignment="center"
-        android:layout_above="@+id/overMiles"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
-
-    <TextView
-        android:text="days leased"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/daysLeased"
-        tools:text="days leased:"
-        android:textAlignment="center"
-        android:layout_above="@+id/expectedMiles"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:id="@+id/milesAllowed"
+        android:hint="Miles Allowed Per Year"
+        android:layout_below="@+id/leaseMonths"
+        android:layout_alignLeft="@+id/leaseMonths"
+        android:layout_alignStart="@+id/leaseMonths"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -86,52 +54,81 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/currentMiles"
-        android:hint="Current Amount Of Miles"
-        android:layout_below="@+id/leaseMonths"
-        android:layout_alignLeft="@+id/leaseMonths"
-        android:layout_alignStart="@+id/leaseMonths"/>
+        android:layout_below="@+id/milesAllowed"
+        android:layout_alignLeft="@+id/milesAllowed"
+        android:layout_alignStart="@+id/milesAllowed"
+        android:id="@+id/overage"
+        android:hint="Cost Per Mile Over"/>
+
+    <Button
+        android:text="Next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nextButton"
+        android:onClick="onClick (MainActivity)"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:text="save vehicle 1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveButton1"
+        tools:text="save vehicle 1"
+        android:onClick="onClick"
+        android:layout_above="@+id/nextButton"
+        android:layout_toLeftOf="@+id/nextButton"
+        android:layout_toStartOf="@+id/nextButton"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:text="Save Vehicle 2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveButton2"
+        android:layout_alignBaseline="@+id/saveButton1"
+        android:layout_alignBottom="@+id/saveButton1"
+        android:layout_toRightOf="@+id/nextButton"
+        android:layout_toEndOf="@+id/nextButton"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="date"
         android:ems="10"
-        android:id="@+id/milesAllowed"
-        android:hint="Miles Allowed Per Year"
-        android:layout_below="@+id/currentMiles"
-        android:layout_alignLeft="@+id/currentMiles"
-        android:layout_alignStart="@+id/currentMiles"/>
+        android:id="@+id/leaseDate"
+        android:hint="Date Lease Started"
+        android:layout_marginTop="73dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
-        android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/overMiles"
+        android:id="@+id/textView"
         android:textAlignment="center"
-        android:layout_above="@+id/saveButton"
+        android:textStyle="normal|bold"
+        android:textSize="14sp"
+        android:text="Only need to enter data one time!"
+        android:layout_below="@+id/instructionText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="61dp"/>
+        android:layout_alignRight="@+id/saveButton2"
+        android:layout_alignEnd="@+id/saveButton2"/>
 
-    <Button
-        android:text="Load"
+    <TextView
+        android:text="If data is already saved, click Next."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/saveButton"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/loadButton"
-        android:onClick="onClick"/>
-
-    <Button
-        android:text="Calculate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/saveButton"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/calculateButton"/>
+        android:layout_below="@+id/textView"
+        android:id="@+id/textView12"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_alignLeft="@+id/saveButton1"
+        android:layout_alignStart="@+id/saveButton1"
+        android:textStyle="normal|bold"
+        android:textAlignment="center"/>
 
 </RelativeLayout>
