@@ -35,6 +35,7 @@ public class CalculateActivity extends AppCompatActivity implements View.OnClick
         calcOne.setOnClickListener(calculateOne);
         calcTwo = (Button) findViewById(R.id.calcTwo);
         calcTwo.setOnClickListener(calculateTwo);
+        //
     }
 
     TextView textView1;
