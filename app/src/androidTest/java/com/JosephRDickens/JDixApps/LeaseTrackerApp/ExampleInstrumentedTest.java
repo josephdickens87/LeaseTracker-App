@@ -1,4 +1,4 @@
-package com.example.joe.leasetracker;
+package com.JosephRDickens.JDixApps.LeaseTrackerApp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.joe.leasetracker", appContext.getPackageName());
+        assertEquals("com.android.joe.leasetracker", appContext.getPackageName());
     }
 }

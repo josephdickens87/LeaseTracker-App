@@ -1,4 +1,4 @@
-package com.example.joe.leasetracker;
+package com.JosephRDickens.JDixApps.LeaseTrackerApp;
 
 import org.junit.Test;
 
