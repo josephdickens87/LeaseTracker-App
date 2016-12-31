@@ -15,14 +15,14 @@ import org.joda.time.format.DateTimeFormat;
 
 import java.text.DecimalFormat;
 
-public class Main3Activity extends AppCompatActivity implements View.OnClickListener
+public class CalculateActivity extends AppCompatActivity implements View.OnClickListener
 {
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.calculate);
         textView1 = (TextView) findViewById(R.id.textView1);
         textView2 = (TextView) findViewById(R.id.textView2);
         textView3 = (TextView) findViewById(R.id.textView3);
@@ -32,7 +32,7 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
         calcOne = (Button) findViewById(R.id.calcOne);
         calcOne.setOnClickListener(calculateOne);
         calcTwo = (Button) findViewById(R.id.calcTwo);
-        calcTwo.setOnClickListener(calulateTwo);
+        calcTwo.setOnClickListener(calculateTwo);
     }
 
     TextView textView1;
@@ -63,6 +63,7 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
 
             SharedPreferences sharedPreferences = getSharedPreferences("LeaseData1", Context
                     .MODE_PRIVATE);
+            String milesDelivery = sharedPreferences.getString("milesDelivery", "f");
             String leaseDate = sharedPreferences.getString("leaseDate", "f");
             String leaseMonths = sharedPreferences.getString("leaseMonths", "f");
             String milesAllowed = sharedPreferences.getString("milesAllowed", "f");
@@ -74,6 +75,8 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
             textView4.setText(milesAllowed);
 
             LocalDateTime today = LocalDateTime.now();
+
+            double milesDeliveryDoub = Double.parseDouble(milesDelivery);
 
             double enterMilesDoub = Double.parseDouble(enterMiles);
             LocalDateTime jodaLease = LocalDateTime.parse(leaseDate, DateTimeFormat
@@ -89,7 +92,7 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
             double anticipatedMiles = avgMiles * leaseLengthDays;
 
             double monthlyAllowedMiles = milesAllowedYearInt / 12;
-            double totalAllowedMiles = monthlyAllowedMiles * leaseMonthsInt;
+            double totalAllowedMiles = (monthlyAllowedMiles * leaseMonthsInt) + milesDeliveryDoub;
             double milesOver = anticipatedMiles - totalAllowedMiles;
 
             double overageChargeDouble = Double.parseDouble(overageCharge);
@@ -103,7 +106,7 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
         }
     };
 
-    View.OnClickListener calulateTwo = new View.OnClickListener()
+    View.OnClickListener calculateTwo = new View.OnClickListener()
     {
         @Override
         public void onClick(View view)
@@ -113,6 +116,7 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
 
             SharedPreferences sharedPreferences = getSharedPreferences("LeaseData2", Context
                     .MODE_PRIVATE);
+            String milesDelivery = sharedPreferences.getString("milesDelivery", "f");
             String leaseDate = sharedPreferences.getString("leaseDate", "f");
             String leaseMonths = sharedPreferences.getString("leaseMonths", "f");
             String milesAllowed = sharedPreferences.getString("milesAllowed", "f");
@@ -124,6 +128,8 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
             textView4.setText(milesAllowed);
 
             LocalDateTime today = LocalDateTime.now();
+
+            double milesDeliveryDoub = Double.parseDouble(milesDelivery);
 
             double enterMilesDoub = Double.parseDouble(enterMiles);
             LocalDateTime jodaLease = LocalDateTime.parse(leaseDate, DateTimeFormat
@@ -139,7 +145,7 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
             double anticipatedMiles = avgMiles * leaseLengthDays;
 
             double monthlyAllowedMiles = milesAllowedYearInt / 12;
-            double totalAllowedMiles = monthlyAllowedMiles * leaseMonthsInt;
+            double totalAllowedMiles = (monthlyAllowedMiles * leaseMonthsInt) + milesDeliveryDoub;
             double milesOver = anticipatedMiles - totalAllowedMiles;
 
             double overageChargeDouble = Double.parseDouble(overageCharge);

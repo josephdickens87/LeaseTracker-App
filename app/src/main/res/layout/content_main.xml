@@ -38,18 +38,9 @@
         android:hint="Miles Allowed Per Year"
         android:layout_below="@+id/leaseMonths"
         android:layout_alignLeft="@+id/leaseMonths"
-        android:layout_alignStart="@+id/leaseMonths"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/leaseMonths"
-        android:hint="Lease Months"
-        android:layout_below="@+id/leaseDate"
-        android:layout_alignLeft="@+id/leaseDate"
-        android:layout_alignStart="@+id/leaseDate"/>
+        android:layout_alignStart="@+id/leaseMonths"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -60,7 +51,9 @@
         android:layout_alignLeft="@+id/milesAllowed"
         android:layout_alignStart="@+id/milesAllowed"
         android:id="@+id/overage"
-        android:hint="Cost Per Mile Over"/>
+        android:hint=" Cost Per Mile Over: e.g. .25"
+        android:layout_alignRight="@+id/saveButton2"
+        android:layout_alignEnd="@+id/saveButton2"/>
 
     <Button
         android:text="Next"
@@ -93,17 +86,6 @@
         android:layout_toRightOf="@+id/nextButton"
         android:layout_toEndOf="@+id/nextButton"/>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="date"
-        android:ems="10"
-        android:id="@+id/leaseDate"
-        android:hint="Date Lease Started"
-        android:layout_marginTop="73dp"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"/>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -130,5 +112,42 @@
         android:layout_alignStart="@+id/saveButton1"
         android:textStyle="normal|bold"
         android:textAlignment="center"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_below="@+id/leaseDate"
+        android:layout_alignLeft="@+id/leaseDate"
+        android:layout_alignStart="@+id/leaseDate"
+        android:id="@+id/milesDelivery"
+        android:hint="Miles At Delivery"
+        android:layout_alignRight="@+id/textView12"
+        android:layout_alignEnd="@+id/textView12"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/leaseMonths"
+        android:hint="Lease Months"
+        android:layout_below="@+id/milesDelivery"
+        android:layout_alignLeft="@+id/milesDelivery"
+        android:layout_alignStart="@+id/milesDelivery"
+        android:layout_alignRight="@+id/saveButton2"
+        android:layout_alignEnd="@+id/saveButton2"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/leaseDate"
+        android:hint="Date Lease Started"
+        android:layout_marginTop="26dp"
+        android:layout_below="@+id/textView12"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

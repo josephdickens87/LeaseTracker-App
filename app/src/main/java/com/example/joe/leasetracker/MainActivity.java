@@ -34,12 +34,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         leaseMonths = (EditText) findViewById(R.id.leaseMonths);
         milesAllowed = (EditText) findViewById(R.id.milesAllowed);
         overage = (EditText) findViewById(R.id.overage);
+        milesDelivery = (EditText) findViewById(R.id.milesDelivery);
         Toast.makeText(this, "Enter Date as MM/DD/YYYY", Toast.LENGTH_LONG).show();
     }
 
     Button saveButton2;
     Button saveButton1;
     Button nextButton;
+    EditText milesDelivery;
     EditText leaseDate;
     EditText leaseMonths;
     EditText milesAllowed;
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             SharedPreferences leaseInfo = getSharedPreferences("LeaseData1", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = leaseInfo.edit();
+            editor.putString("milesDelivery", milesDelivery.getText().toString());
             editor.putString("leaseDate", leaseDate.getText().toString());
             editor.putString("leaseMonths", leaseMonths.getText().toString());
             editor.putString("milesAllowed", milesAllowed.getText().toString());
@@ -74,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             SharedPreferences leaseInfo = getSharedPreferences("LeaseData2", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = leaseInfo.edit();
+            editor.putString("milesDelivery", milesDelivery.getText().toString());
             editor.putString("leaseDate", leaseDate.getText().toString());
             editor.putString("leaseMonths", leaseMonths.getText().toString());
             editor.putString("milesAllowed", milesAllowed.getText().toString());
@@ -99,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void next()
     {
-        Intent next = new Intent(this, Main3Activity.class);
+        Intent next = new Intent(this, CalculateActivity.class);
         startActivity(next);
     }
 
